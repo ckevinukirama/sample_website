@@ -3,6 +3,12 @@
   <head>
     <title>Test Page: Don't Panic</title>
     <style>
+      .content-container {
+        display: flex;
+        flex: 1 1 auto;
+        padding-top: 10vh;
+        width: 100%;
+      }
       a {
         color: red;
       }
@@ -15,10 +21,39 @@
       .bio-box a {
         color: green;
       }
+      .header {
+        background-color: #000;
+        color: #fff;
+        position: fixed;
+        width: 100%;
+        z-index: 20;
+      }
+      /* COLUMN STYLES */
+      .col-three {
+        display: flex;
+        flex: 1;
+      }
+      .col {
+        box-sizing: border-box;
+        padding: 2em;
+      }
+      .col-three .col ~ .col {
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .col-three .col-nav {
+        flex: 0 1 15em;
+      }
+      .col-three .col-content {
+        flex: 1;
+      }
+      .col-three .col-aside {
+        flex: 0 1 20em;
+      }
     </style>
     <meta charset="utf-8">
   </head>
   <body>
+    {% include header.html %}
     <h1>I'm an h1</h1>
     <ul>
       <li>
@@ -157,5 +192,17 @@ layout: default
   Other related tutorials can be found at
   <a href="https://learnenough.com/">learnenough.com</a>.
 </p>
+
+<div class="gallery col-three">
+  <div class="col col-nav">
+    I'm the nav
+  </div>
+  <div class="col col-content">
+    I'm the 3col page!
+  </div>
+  <div class="col col-aside">
+    I'm over on the right
+  </div>
+</div>
   </body>
 </html>
